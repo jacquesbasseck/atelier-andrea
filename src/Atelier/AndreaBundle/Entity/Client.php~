@@ -1,0 +1,130 @@
+<?php
+
+namespace Atelier\AndreaBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use User\UserBundle\Entity\User;
+
+/**
+ * Client
+ *
+ * @ORM\Table(name="client")
+ * @ORM\Entity(repositoryClass="Atelier\AndreaBundle\Repository\ClientRepository")
+ */
+class Client extends User
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profession", type="string", length=255, nullable=true)
+     */
+    private $profession;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point", type="integer")
+     */
+    private $point;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Atelier\AndreaBundle\Entity\Adresse", mappedBy="client", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $adresses;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Atelier\AndreaBundle\Entity\RendezVous", mappedBy="client", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $rendezVous;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Atelier\AndreaBundle\Entity\Commande", mappedBy="client", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        parent::__construct ();
+
+        $this->rendezVous = new ArrayCollection();
+        $this->adresses = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set profession
+     *
+     * @param string $profession
+     *
+     * @return Client
+     */
+    public function setProfession($profession)
+    {
+        $this->profession = $profession;
+
+        return $this;
+    }
+
+    /**
+     * Get profession
+     *
+     * @return string
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * Set point
+     *
+     * @param integer $point
+     *
+     * @return Client
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+
+        return $this;
+    }
+
+    /**
+     * Get point
+     *
+     * @return int
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+}

@@ -1,0 +1,24 @@
+{% extends "layout/base.html.twig" %}
+
+{% block header %}
+    {% include "navigation/header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container_12">
+        <div class="grid_12 page">
+            {% include "modules/carousel.html.twig" %}
+            <h1>Hello World!</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include "navigation/footer.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/caroussel/indexCarousel.js') }}"></script>
+{% endblock %}

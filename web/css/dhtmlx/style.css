@@ -1,0 +1,45 @@
+
+.jaune.dhx_header {
+
+}
+
+.dhx_cal_event div.dhx_footer,
+.dhx_cal_event.past_event div.dhx_footer,
+.dhx_cal_event.event_english div.dhx_footer,
+.dhx_cal_event.event_math div.dhx_footer,
+.dhx_cal_event.event_science div.dhx_footer{
+    background-color: transparent !important;
+}
+.dhx_cal_event .dhx_body{
+    -webkit-transition: opacity 0.1s;
+    transition: opacity 0.1s;
+    opacity: 0.8;
+}
+.dhx_cal_event .dhx_title{
+    line-height: 12px;
+}
+.dhx_cal_event_line:hover,
+.dhx_cal_event:hover .dhx_body,
+.dhx_cal_event.selected .dhx_body,
+.dhx_cal_event.dhx_cal_select_menu .dhx_body{
+    opacity: 1;
+}
+
+.jaune .dhx_body, .jaune .dhx_footer, .jaune .dhx_header, .jaune .dhx_title{
+    background-color: #887A2E !important;
+}
+.vert .dhx_body, .vert .dhx_footer, .vert .dhx_header, .vert .dhx_title{
+    background-color: #36BD14 !important;
+}
+.rouge .dhx_body, .rouge .dhx_footer, .rouge .dhx_header, .rouge .dhx_title{
+    background-color: #721c24 !important;
+}
+.rose .dhx_body .rose .dhx_footer, .rose .dhx_header, .rose .dhx_title{
+    background-color: #FC5BD5 !important;
+}
+.violet .dhx_body, .violet .dhx_footer, .violet .dhx_header, .violet .dhx_title{
+    background-color: mediumvioletred !important;
+}
+.orange .dhx_body, .orange .dhx_footer, .orange .dhx_header, .orange .dhx_title{
+    background-color: orange !important;
+}

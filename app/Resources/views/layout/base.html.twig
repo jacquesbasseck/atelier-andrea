@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/camera.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+        {% endblock %}
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" type="text/css" />
+        <script src="{{ asset('js/plugins/jquery/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('js/plugins/jquery/jquery-migrate-3.0.0.min.js') }}"></script>
+
+        <script src="{{ asset('js/camera.js') }}"></script>
+
+        <script src="{{ asset('js/plugins/jquery/jquery.carouFredSel-6.1.0-packed.js') }}"></script>
+        <script  src="{{ asset('js/plugins/jquery/jquery.touchSwipe.min.js') }}"></script>
+        <!-- JS ROUTING -->
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    </head>
+    <body>
+        <header>
+            {% block header %} {% endblock %}
+        </header>
+        {% block body %}{% endblock %}
+        <footer>
+            <div class="container_12">
+                {% block footer %} {% endblock %}
+            </div>
+        </footer>
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

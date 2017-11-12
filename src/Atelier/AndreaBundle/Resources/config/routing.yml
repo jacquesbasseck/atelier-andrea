@@ -1,0 +1,37 @@
+atelier_andrea_homepage:
+    path:     /
+    defaults: { _controller: AtelierAndreaBundle:Default:index }
+
+emploi_du_temps:
+    path:     /emploidutemps
+    defaults: { _controller: AtelierAndreaBundle:RendezVous:emploiDuTemps }
+    options:
+        expose: true
+
+emploi_du_temps.create:
+    path:     /create
+    defaults: { _controller: AtelierAndreaBundle:RendezVous:create }
+    methods: [POST]
+    options:
+        expose: true
+
+emploi_du_temps.update:
+    path:     /update
+    defaults: { _controller: AtelierAndreaBundle:RendezVous:update }
+    methods: [POST]
+    options:
+        expose: true
+
+emploi_du_temps.rendez_vous.user:
+    path:     /getuserdata
+    defaults: { _controller: AtelierAndreaBundle:RendezVous:user }
+    methods: [POST]
+    options:
+        expose: true
+
+emploi_du_temps.delete:
+    path:     /delete
+    defaults: { _controller: AtelierAndreaBundle:RendezVous:delete }
+    methods: [DELETE]
+    options:
+        expose: true

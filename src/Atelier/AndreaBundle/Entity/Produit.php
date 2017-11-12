@@ -1,0 +1,270 @@
+<?php
+
+namespace Atelier\AndreaBundle\Entity;
+
+use Atelier\AndreaBundle\Traits\DoctrineExtension;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Produit
+ *
+ * @ORM\Table(name="produit")
+ * @ORM\Entity(repositoryClass="Atelier\AndreaBundle\Repository\ProduitRepository")
+ */
+class Produit
+{
+    use DoctrineExtension;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=255)
+     */
+    private $reference;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quantite", type="string", length=255)
+     */
+    private $quantite;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="disponible", type="boolean")
+     */
+    private $disponible;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var Commande
+     *
+     * @ORM\ManyToOne(targetEntity="Atelier\AndreaBundle\Entity\Commande", inversedBy="produits")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $commande;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Atelier\AndreaBundle\Entity\Tarif", inversedBy="produits")
+     * @ORM\JoinTable(name="produit_tarif")
+     */
+    private $tarifs;
+
+    public function __construct()
+    {
+        $this->tarifs = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Produit
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     *
+     * @return Produit
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param string $quantite
+     *
+     * @return Produit
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return string
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set disponible
+     *
+     * @param boolean $disponible
+     *
+     * @return Produit
+     */
+    public function setDisponible($disponible)
+    {
+        $this->disponible = $disponible;
+
+        return $this;
+    }
+
+    /**
+     * Get disponible
+     *
+     * @return bool
+     */
+    public function getDisponible()
+    {
+        return $this->disponible;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set commande
+     *
+     * @param \Atelier\AndreaBundle\Entity\Commande $commande
+     *
+     * @return Produit
+     */
+    public function setCommande(\Atelier\AndreaBundle\Entity\Commande $commande = null)
+    {
+        $this->commande = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \Atelier\AndreaBundle\Entity\Commande
+     */
+    public function getCommande()
+    {
+        return $this->commande;
+    }
+
+    /**
+     * Add tarif
+     *
+     * @param \Atelier\AndreaBundle\Entity\Tarif $tarif
+     *
+     * @return Produit
+     */
+    public function addTarif(\Atelier\AndreaBundle\Entity\Tarif $tarif)
+    {
+        $this->tarifs[] = $tarif;
+
+        return $this;
+    }
+
+    /**
+     * Remove tarif
+     *
+     * @param \Atelier\AndreaBundle\Entity\Tarif $tarif
+     */
+    public function removeTarif(\Atelier\AndreaBundle\Entity\Tarif $tarif)
+    {
+        $this->tarifs->removeElement($tarif);
+    }
+
+    /**
+     * Get tarifs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTarifs()
+    {
+        return $this->tarifs;
+    }
+}
